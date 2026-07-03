@@ -61,7 +61,7 @@ def test_contact() -> None:
     print(f"Witnesses: {valid.witness_count}")
     print(f"Message: '{valid.message_received}'")
     print("=" * 40)
-
+    print("\nExpected validation error:")
     try:
         AlienContact(
             contact_id="AC_2024_002",
@@ -74,9 +74,8 @@ def test_contact() -> None:
             message_received="We come in peace",
         )
     except ValidationError as e:
-        print("\nExpected validation error:")
-        print(e.errors()[0]["msg"])
-        print("=" * 40)
+        for err in e.errors():
+            print(err["msg"])
 
 
 if __name__ == "__main__":
