@@ -52,8 +52,7 @@ def main() -> None:
             notes=None,
         )
     except ValidationError as e:
-        for err in e.errors():
-            print(err["msg"])
+        print(e.errors()[0]["msg"])
 
 
 if __name__ == "__main__":

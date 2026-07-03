@@ -74,8 +74,7 @@ def test_contact() -> None:
             message_received="We come in peace",
         )
     except ValidationError as e:
-        for err in e.errors():
-            print(err["msg"])
+        print(e.errors()[0]["msg"])
 
 
 if __name__ == "__main__":
