@@ -136,8 +136,8 @@ def test_mission() -> None:
         )
     except ValidationError as e:
         print("\nExpected validation error:")
-        print(e.errors()[0]["msg"])
-        print("=" * 41)
+        for error in e.errors():
+            print(f"- {error['msg']}")
 
 
 if __name__ == "__main__":
